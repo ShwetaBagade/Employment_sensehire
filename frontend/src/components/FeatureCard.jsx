@@ -1,5 +1,5 @@
 import { useState } from 'react'
-
+ import { useNavigate } from 'react-router-dom'
 const COLOR_MAP = {
   teal:   { bg: '#0d2e2a', border: '#0f766e', accent: '#14b8a6', badge: '#134e4a', text: '#99f6e4' },
   purple: { bg: '#1e1233', border: '#7c3aed', accent: '#a78bfa', badge: '#2e1065', text: '#ddd6fe' },
@@ -20,7 +20,7 @@ export default function FeatureCard({ feature, index }) {
   const [expanded, setExpanded] = useState(false)
   const c = COLOR_MAP[feature.color] || COLOR_MAP.teal
   const diff = DIFFICULTY_STYLE[feature.difficulty]
-
+    const navigate = useNavigate()
   const notAllowedList = Array.isArray(feature.notAllowed)
     ? feature.notAllowed
     : [feature.notAllowed]
@@ -224,31 +224,34 @@ export default function FeatureCard({ feature, index }) {
       )}
 
       {/* Claim button */}
+     
+    
       <div style={{ padding: '16px 20px 20px' }}>
-        <a
-          href={`https://github.com/YOUR_ORG/sensehire/issues/new?template=${feature.id.toLowerCase()}-${feature.title.toLowerCase().replace(/\s+/g, '-')}.yml`}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            display: 'block',
-            textAlign: 'center',
-            padding: '10px',
-            background: `linear-gradient(135deg, ${c.border}, ${c.accent}99)`,
-            color: '#fff',
-            borderRadius: '7px',
-            fontSize: '13px',
-            fontWeight: 700,
-            fontFamily: '"Syne", sans-serif',
-            textDecoration: 'none',
-            letterSpacing: '0.03em',
-            transition: 'opacity 0.15s',
-          }}
-          onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
-          onMouseLeave={e => e.currentTarget.style.opacity = '1'}
-        >
-          Claim on GitHub →
-        </a>
+  <button
+    onClick={() => navigate(`/${feature.id.toLowerCase()}`)}
+    style={{
+      display: 'block',
+      width: '100%',
+      textAlign: 'center',
+      padding: '10px',
+      background: `linear-gradient(135deg, ${c.border}, ${c.accent}99)`,
+      color: '#fff',
+      borderRadius: '7px',
+      fontSize: '13px',
+      fontWeight: 700,
+      fontFamily: '"Syne", sans-serif',
+      border: 'none',
+      cursor: 'pointer',
+      letterSpacing: '0.03em',
+      transition: 'opacity 0.15s',
+    }}
+    onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
+    onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+  >
+    Open Feature →
+  </button>
+</div>
       </div>
-    </div>
+    
   )
 }

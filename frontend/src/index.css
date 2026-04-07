@@ -1,0 +1,14 @@
+/* Reset + base theme */
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0f172a; /* dark background */
+  color: #f1f5f9; /* light text */
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* Optional: smoother look */
+* {
+  box-sizing: border-box;
+}
