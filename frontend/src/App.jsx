@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import config from '../features.config.js'
-
+import SearchJobs from "./pages/SearchJobs";
 import F01 from './features/f01/f01.jsx'
 import F02 from './features/f02/f02.jsx'
 import F03 from './features/f03/f03.jsx'
@@ -44,6 +44,7 @@ export default function App() {
         <Route path="/f13" element={<F13 />} />
         <Route path="/f14" element={<F14 />} />
         <Route path="/f15" element={<F15 />} />
+        <Route path="/search" element={<SearchJobs />} />
          <Route path="*" element={<div style={{color: 'white'}}>Page Not Found</div>} />
       </Routes>
     </BrowserRouter>
