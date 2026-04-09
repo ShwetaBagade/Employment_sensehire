@@ -20,6 +20,7 @@ app.get("/api/test", (req, res) => {
 // ROUTES
 // ======================
 app.use("/api/jobs", require("./routes/f04-routes"));
+app.use("/api/f05", require("./routes/f05-routes"));
 
 // ======================
 // F01 ROUTE
